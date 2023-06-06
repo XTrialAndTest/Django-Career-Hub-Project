@@ -1,0 +1,16 @@
+{% extends "core/base.html" %} {% block title%}Core{% endblock %} {% load
+crispy_forms_tags %}
+<!-- content -->
+{% block content %}
+<!-- for loop -->
+{% for i in jobs %}
+
+<h3>{{i.job_title}}</h3>
+
+<h1 class="h4">help i need this from core</h1>
+<a class="btn btn-danger" href="{% url 'job_detail' i.slug %}">close</a>
+<!-- endfor -->
+
+{%endfor %}
+<!-- end -->
+{% endblock %}

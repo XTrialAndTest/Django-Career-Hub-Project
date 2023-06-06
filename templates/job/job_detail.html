@@ -1,0 +1,17 @@
+{% extends "core/base.html" %} {% block title%}Details{% endblock %} {% load
+crispy_forms_tags %} {% block content %}
+<!-- for loop -->
+
+<h3>{{job.job_title}}</h3>
+<h3>{{job.job_category}}</h3>
+<h3>{{job.job_location}}</h3>
+<h3>{{job.contract_type}}</h3>
+
+<h3>{{job.position}}</h3>
+<h3>last updated on: {{job.updated_at}}</h3>
+
+<h1 class="h4">help i need this from core</h1>
+<!-- endfor -->
+
+<!-- endblock -->
+{% endblock %}
