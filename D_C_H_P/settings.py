@@ -12,7 +12,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
-
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,8 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-5a-0&mchs-8ix6vwhvrh!bcj_=_n&(*m2vgd!2i5kh@@gtcflr"
 
+SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -45,6 +48,7 @@ INSTALLED_APPS = [
     "core",
     "users",
     "job",
+
 ]
 
 MIDDLEWARE = [
@@ -134,3 +138,10 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 LOGOUT_REDIRECT_URL = "login"
 LOGIN_REDIRECT_URL = "/"
 AUTH_USER_MODEL = "users.CustomUser"
+
+cloudinary.config(
+    cloud_name=config("CLOUDINARY_NAME"),
+    api_key=config("CLOUDINARY_API"),
+    api_secret=config("CLOUDINARY_SECRET_KEY"),
+    secure=config("CD_SECURE"),
+)

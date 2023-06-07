@@ -1,0 +1,15 @@
+{% extends "core/base.html" %} {% block title%}Categories Details{% endblock %}
+{% load crispy_forms_tags %}
+
+<!-- block content -->
+{% block content %}
+<!-- for loop -->
+{% for i in job %}
+
+<h3>{{i.job_title}}</h3>
+<a
+  class="btn btn-danger"
+  href="{% url 'job_detail' i.job_category.slug i.slug %}"
+  >view Details</a
+>
+{%endfor %}{% endblock %}

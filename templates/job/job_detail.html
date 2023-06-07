@@ -9,6 +9,9 @@ crispy_forms_tags %} {% block content %}
 
 <h3>{{job.position}}</h3>
 <h3>last updated on: {{job.updated_at}}</h3>
+<a href="{% url 'employer_profile_detail' job.employer.id%}"
+  ><h3>{{job.employer.full_name}}</h3></a
+>
 
 <h1 class="h4">help i need this from core</h1>
 <!-- endfor -->

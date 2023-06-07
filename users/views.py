@@ -76,3 +76,7 @@ def employer_sign_up(request):
 #         form = EmployerProfileForm()
 
 #     return render(request, "employer_profile.html", {"form": form})
+def employer_profile_detail(request, pk):
+    employer = Employer.employer.get(pk=pk)
+    all = employer.jobs.all()
+    return render(request, "profiles/employer_profile_detail.html", {"employer": employer, "all": all})

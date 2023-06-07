@@ -7,8 +7,11 @@ crispy_forms_tags %}
 
 <h3>{{i.job_title}}</h3>
 
-<h1 class="h4">help i need this from core</h1>
-<a class="btn btn-danger" href="{% url 'job_detail' i.slug %}">close</a>
+<a
+  class="btn btn-danger"
+  href="{% url 'job_detail' i.job_category.slug i.slug %}"
+  >click</a
+>
 <!-- endfor -->
 
 {%endfor %}

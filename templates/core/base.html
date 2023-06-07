@@ -1,4 +1,6 @@
 {% load django_bootstrap5 %} {% load crispy_forms_tags %}
+<!-- custom template tags -->
+{% load menu %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title%}{% endblock %} | DCHP</title>
-    {% bootstrap_css %}
+    {% bootstrap_css %} {% bootstrap_javascript %}
   </head>
   <body>
     {% include 'core/nav.html' %} {% block content %} {% endblock %}

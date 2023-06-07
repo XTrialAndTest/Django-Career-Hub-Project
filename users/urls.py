@@ -14,5 +14,7 @@ urlpatterns = [
         views.employer_sign_up,
         name="employer_sign_up",
     ),
+    path('employer_profile_detail/<str:pk>', views.employer_profile_detail,
+         name="employer_profile_detail")
     # path("employer_profile/", views.employer_profile, name="employer_profile"),
 ]

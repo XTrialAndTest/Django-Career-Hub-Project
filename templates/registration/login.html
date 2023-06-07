@@ -1,5 +1,8 @@
-{% extends "core/base.html" %} {% block title%}Login{% endblock %} {% load
-crispy_forms_tags %} {% block content %}
+{% extends "core/base.html" %} {% block title%}Login{% endblock %}
+<!--  crispy -->
+{% load crispy_forms_tags %}
+<!-- content -->
+{% block content %}
 <form action="" method="post">
   {% csrf_token %} {{form| crispy}}
   <p>
