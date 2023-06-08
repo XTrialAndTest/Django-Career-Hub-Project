@@ -1,5 +1,7 @@
-{% extends "core/base.html" %} {% block title%}Categories Details{% endblock %}
-{% load crispy_forms_tags %}
+{% extends "core/base.html" %}
+<!-- block title -->
+{% block title%}{{job.job_category.title}} Details{%endblock%} {% load
+crispy_forms_tags %}
 
 <!-- block content -->
 {% block content %}

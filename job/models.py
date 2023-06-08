@@ -1,5 +1,5 @@
 from django.db import models
-from users.models import Employer
+from users.models import Employer, Applicant
 
 
 # Create your models here.
@@ -33,6 +33,7 @@ class Job(models.Model):
     employer = models.ForeignKey(
         Employer, on_delete=models.CASCADE, related_name="jobs"
     )
+    applicant = models.ManyToManyField(Employer, related_name="applicant_job")
     job_category = models.ForeignKey(
         Category,
         related_name="jobs",
