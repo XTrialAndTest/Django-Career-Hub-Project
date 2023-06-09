@@ -1,0 +1,20 @@
+{% extends "core/base.html" %}
+<!-- block title -->
+{% block title%}{{job.job_category.title}} Details{%endblock%} {% load
+crispy_forms_tags %}
+
+<!-- block content -->
+{% block content %}
+<!-- for loop -->
+
+{% if request.user.jobs %} {% for i in job%}
+<h3>{{i.job_title}}</h3>
+<h3>applicant: {{i.employer}}</h3>
+<h3>CV: {{i.applicant_CV.cv}}</h3>
+{% endfor %}
+<h3>you have these products</h3>
+{% else %}
+<h3>you don't have Applications</h3>
+{%endif%}
+<!-- endblock -->
+{% endblock %}

@@ -13,3 +13,9 @@ class JobCreationForm(forms.ModelForm):
             "contract_type",
             "job_category",
         ]
+
+
+class JobApplicationForm(forms.ModelForm):
+    class Meta:
+        model = Job
+        fields = ['cv']

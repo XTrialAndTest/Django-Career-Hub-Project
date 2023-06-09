@@ -10,8 +10,11 @@ crispy_forms_tags %}
 <a
   class="btn btn-danger"
   href="{% url 'job_detail' i.job_category.slug i.slug %}"
-  >click</a
+  >Show more</a
 >
+{% if user.user_type == 'applicant' %}
+<a class="btn btn-success" href="{% url 'job_application' %}">Apply</a>
+{% endif %}
 <!-- endfor -->
 
 {%endfor %}

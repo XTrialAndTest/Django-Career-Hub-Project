@@ -1,5 +1,7 @@
-{% extends "core/base.html" %} {% block title%}Categories Details{% endblock %}
-{% load crispy_forms_tags %}
+{% extends "core/base.html" %}
+<!-- block title -->
+{% block title%}{{job.job_category.title}} Details{%endblock%} {% load
+crispy_forms_tags %}
 
 <!-- block content -->
 {% block content %}
@@ -12,4 +14,6 @@
   href="{% url 'job_detail' i.job_category.slug i.slug %}"
   >view Details</a
 >
-{%endfor %}{% endblock %}
+{% if user.user_type == 'applicant' %}
+<a class="btn btn-success" href="#">Apply</a>
+{% endif %} {%endfor %}{% endblock %}
