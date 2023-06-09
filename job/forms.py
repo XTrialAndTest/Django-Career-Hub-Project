@@ -18,4 +18,4 @@ class JobCreationForm(forms.ModelForm):
 class JobApplicationForm(forms.ModelForm):
     class Meta:
         model = Job
-        fields = ['cv']
+        fields = ['job_title']

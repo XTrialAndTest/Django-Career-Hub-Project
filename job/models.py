@@ -39,7 +39,7 @@ class Job(models.Model):
         Employer, on_delete=models.CASCADE, related_name="jobs"
     )
     applicant = models.ManyToManyField(Applicant, related_name="applicant_job")
-    cv = models.CharField(max_length=255, null=True)
+
     job_category = models.ForeignKey(
         Category,
         related_name="jobs",
