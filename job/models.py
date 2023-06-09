@@ -1,7 +1,12 @@
 from django.db import models
 from users.models import Employer, Applicant
+<<<<<<< HEAD
 from cloudinary.models import CloudinaryField
 from django.urls import reverse
+=======
+
+
+>>>>>>> f4662e19964eae8940e406257a029747dfd5f44a
 # Create your models here.
 
 
@@ -45,9 +50,13 @@ class Job(models.Model):
     employer = models.ForeignKey(
         Employer, on_delete=models.CASCADE, related_name="jobs"
     )
+<<<<<<< HEAD
     applicant = models.ManyToManyField(Applicant, related_name="applicant_job")
     cv = models.ForeignKey(
         Applicant_CV, related_name="applicant_CV", on_delete=models.CASCADE, null=True)
+=======
+    applicant = models.ManyToManyField(Employer, related_name="applicant_job")
+>>>>>>> f4662e19964eae8940e406257a029747dfd5f44a
     job_category = models.ForeignKey(
         Category,
         related_name="jobs",
