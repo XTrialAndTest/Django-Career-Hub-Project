@@ -21,13 +21,6 @@ class Category(models.Model):
         return reverse("Category", kwargs={"slug": self.slug})
 
 
-class Applicant_CV(models.Model):
-    cv = models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.cv
-
-
 class Job(models.Model):
     positions = (
         ("junior", "junior"),
@@ -46,8 +39,7 @@ class Job(models.Model):
         Employer, on_delete=models.CASCADE, related_name="jobs"
     )
     applicant = models.ManyToManyField(Applicant, related_name="applicant_job")
-    cv = models.ForeignKey(
-        Applicant_CV, related_name="applicant_CV", on_delete=models.CASCADE, null=True)
+    cv = models.CharField(max_length=255, null=True)
     job_category = models.ForeignKey(
         Category,
         related_name="jobs",
