@@ -4,4 +4,3 @@ from .models import *
 # Register your models here.
 admin.site.register(Job)
 admin.site.register(Category)
-# admin.site.register(Applicant_CV)

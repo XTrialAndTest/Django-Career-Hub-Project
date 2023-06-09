@@ -2,6 +2,7 @@ from django.db import models
 from users.models import Employer, Applicant
 from cloudinary.models import CloudinaryField
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 # Create your models here.
 
 
@@ -21,6 +22,12 @@ class Category(models.Model):
         return reverse("Category", kwargs={"slug": self.slug})
 
 
+class ApplicantCV(models.Model):
+    applicant = models.ForeignKey(
+        Applicant, on_delete=models.CASCADE, related_name='applicant_cv')
+    cv_name = models.CharField(max_length=200)
+
+
 class Job(models.Model):
     positions = (
         ("junior", "junior"),
@@ -38,8 +45,8 @@ class Job(models.Model):
     employer = models.ForeignKey(
         Employer, on_delete=models.CASCADE, related_name="jobs"
     )
-    applicant = models.ManyToManyField(Applicant, related_name="applicant_job")
 
+    applicantCV = models.ManyToManyField(ApplicantCV, )
     job_category = models.ForeignKey(
         Category,
         related_name="jobs",
