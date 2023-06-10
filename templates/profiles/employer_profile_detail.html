@@ -12,7 +12,9 @@
   href="{% url 'job_detail' i.job_category.slug i.slug %}"
   >view Details</a
 >
-{%endfor %}
+{% if i.employer.email == request.user.email %}
+<a class="btn btn-danger" href="{% url 'job_creation_edit' i.id %}">Post job</a>
+{% endif %} {%endfor %}
 
 <!-- endblock -->
 {% endblock %}

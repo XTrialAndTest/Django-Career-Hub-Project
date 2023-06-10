@@ -40,10 +40,10 @@ login_required
 
 def job_application(request):
     if request.method == "POST":
-        form = JobApplicationForm(
+        form = Cv_form(
             request.POST,
             request.FILES,
-            instance=Job.objects.filter(applicant__id=request.user.id).first(),
+            # instance=Job.objects.filter(applicant__id=request.user.id).first(),
         )
         if form.is_valid():
             user = form.save(commit=False)
@@ -51,7 +51,7 @@ def job_application(request):
             user.save()
             return redirect('/')
     else:
-        form = JobApplicationForm()
+        form = Cv_form()
 
     return render(request, "job/job_application.html", {'form': form})
 
@@ -76,6 +76,19 @@ def job_creation(request):
         form = JobCreationForm()
 
     return render(request, "job/job_creation.html", {'form': form})
+
+
+def job_creation_edit(request, id):
+    job = Job.objects.filter(employer=request.user).get(id=id)
+    if request.method == "POST":
+        form = JobCreationForm(request.POST, request.FILES, instance=job)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    else:
+        form = JobCreationForm(instance=job)
+
+    return render(request, "job/job_creation_edit.html", {'form': form})
 
 
 @login_required

@@ -10,7 +10,7 @@ crispy_forms_tags %}
 {% if request.user.jobs %} {% for i in job%}
 <h3>{{i.job_title}}</h3>
 <h3>applicant: {{i.employer}}</h3>
-<h3>CV: {{i.applicant_CV.cv}}</h3>
+<a href="{% url 'job_creation_edit' i.id %}">Edit Jobs</a>
 {% endfor %}
 <h3>you have these products</h3>
 {% else %}
