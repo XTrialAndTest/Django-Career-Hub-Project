@@ -6,13 +6,15 @@ crispy_forms_tags %}
 <!-- block content -->
 {% block content %}
 <!-- for loop -->
-{% for i in job_item %}
+{% if job_item %} {% for i in job_item %}
 <ul>
   <li>{{i.job.job_title}}</li>
   <li>{{i.cv.cv_name}}</li>
   <li>{{i.cv.applicant.email}}</li>
   <li>{{i.cv.date_applied}}</li>
 </ul>
-{% endfor %}
+{% endfor %} {% else %}
+<h3>You currently don't have any entries</h3>
+{% endif %}
 <!-- endblock -->
 {% endblock %}

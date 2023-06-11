@@ -14,7 +14,7 @@ crispy_forms_tags %} {% block content %}
 >
 {% if job.employer.email == request.user.email %}
 <a class="btn btn-danger" href="{% url 'job_creation_edit' job.id %}"
-  >Post job</a
+  >Edit job</a
 >
 {% endif %} {% if user.user_type == 'applicant' %}
 <a

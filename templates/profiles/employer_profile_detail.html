@@ -13,7 +13,7 @@
   >view Details</a
 >
 {% if i.employer.email == request.user.email %}
-<a class="btn btn-danger" href="{% url 'job_creation_edit' i.id %}">Post job</a>
+<a class="btn btn-danger" href="{% url 'job_creation_edit' i.id %}">Edit job</a>
 {% endif %} {%endfor %}
 
 <!-- endblock -->

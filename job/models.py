@@ -3,6 +3,7 @@ from users.models import Employer, Applicant
 from cloudinary.models import CloudinaryField
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+
 # Create your models here.
 
 
@@ -24,7 +25,8 @@ class Category(models.Model):
 
 class CV(models.Model):
     applicant = models.ForeignKey(
-        Applicant, on_delete=models.CASCADE, related_name='applicant_cv')
+        Applicant, on_delete=models.CASCADE, related_name="applicant_cv"
+    )
     cv_name = models.CharField(max_length=200)
 
     date_applied = models.DateTimeField(auto_now=True, null=True)
@@ -75,10 +77,8 @@ class Job(models.Model):
 
 
 class Job_Item(models.Model):
-    job = models.ForeignKey(
-        Job, on_delete=models.CASCADE, related_name='all_jobs')
-    cv = models.ForeignKey(CV, on_delete=models.CASCADE,
-                           related_name='all_jobs')
+    job = models.ForeignKey(Job, on_delete=models.CASCADE, related_name="all_jobs")
+    cv = models.ForeignKey(CV, on_delete=models.CASCADE, related_name="all_jobs")
 
     def __str__(self):
         return self.cv.cv_name
