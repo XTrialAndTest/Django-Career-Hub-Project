@@ -38,7 +38,8 @@ def search(request):
 login_required
 
 
-def job_application(request):
+def job_application(request, job_category_slug, slug):
+    job_detail = get_object_or_404(Job, slug=slug)
     if request.method == "POST":
         form = Cv_form(
             request.POST,
@@ -49,11 +50,17 @@ def job_application(request):
             user = form.save(commit=False)
             user.applicant = request.user
             user.save()
+            Job_Item.objects.create(job=job_detail, cv=user).save()
             return redirect('/')
     else:
         form = Cv_form()
 
     return render(request, "job/job_application.html", {'form': form})
+
+
+def applicant_job_display(request):
+    job_item = Job_Item.objects.filter(cv__applicant=request.user)
+    return render(request, "job/my_application.html", {'job_item': job_item})
 
 
 @login_required
@@ -93,5 +100,5 @@ def job_creation_edit(request, id):
 
 @login_required
 def job_applied(request):
-    job = Job.objects.filter(employer=request.user)
-    return render(request, "job/job_applied.html", {'job': job})
+    job_item = Job_Item.objects.filter(job__employer=request.user)
+    return render(request, "job/job_applied.html", {'job_item': job_item})

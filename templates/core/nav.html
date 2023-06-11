@@ -27,7 +27,7 @@
       {% elif user.user_type == 'employer' %}
       <a href="{% url 'job_applied' %}">Applications</a>
       <a href="{% url 'job_creation' %}">Post Job</a>
-      <a href="{%  url 'employer_profile_detail' user.id%}">appli</a>
+      <a href="{%  url 'employer_profile_detail' user.id%}">Job Posted</a>
     </ul>
     {% endif %}
     <ul class="navbar-nav">

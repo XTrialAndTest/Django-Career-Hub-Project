@@ -13,7 +13,11 @@ crispy_forms_tags %}
   >Show more</a
 >
 {% if user.user_type == 'applicant' %}
-<a class="btn btn-success" href="{% url 'job_application' %}">Apply</a>
+<a
+  class="btn btn-success"
+  href="{% url 'job_application' i.job_category.slug i.slug %}"
+  >Apply</a
+>
 {% endif %}
 <!-- endfor -->
 

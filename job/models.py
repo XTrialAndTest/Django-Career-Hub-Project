@@ -26,10 +26,11 @@ class CV(models.Model):
     applicant = models.ForeignKey(
         Applicant, on_delete=models.CASCADE, related_name='applicant_cv')
     cv_name = models.CharField(max_length=200)
+
     date_applied = models.DateTimeField(auto_now=True, null=True)
 
     def __str__(self):
-        return self.applicant.username
+        return self.cv_name
 
 
 class Job(models.Model):
@@ -74,8 +75,10 @@ class Job(models.Model):
 
 
 class Job_Item(models.Model):
-    job = models.ForeignKey(Job, on_delete=models.CASCADE)
-    cv = models.ForeignKey(CV, on_delete=models.CASCADE)
+    job = models.ForeignKey(
+        Job, on_delete=models.CASCADE, related_name='all_jobs')
+    cv = models.ForeignKey(CV, on_delete=models.CASCADE,
+                           related_name='all_jobs')
 
     def __str__(self):
-        return self.cv.applicant.username
+        return self.cv.cv_name

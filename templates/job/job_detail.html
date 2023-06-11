@@ -16,8 +16,13 @@ crispy_forms_tags %} {% block content %}
 <a class="btn btn-danger" href="{% url 'job_creation_edit' job.id %}"
   >Post job</a
 >
+{% endif %} {% if user.user_type == 'applicant' %}
+<a
+  class="btn btn-success"
+  href="{% url 'job_application' job.job_category.slug job.slug %}"
+  >Apply</a
+>
 {% endif %}
-
 <!-- endfor -->
 
 <h1 class="h4">help i need this from core</h1>
