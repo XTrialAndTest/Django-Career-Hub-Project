@@ -2,31 +2,40 @@
 crispy_forms_tags %} {% block content %}
 <!-- for loop -->
 
-<h3>{{job.job_title}}</h3>
-<h3>{{job.job_category}}</h3>
-<h3>{{job.job_location}}</h3>
-<h3>{{job.contract_type}}</h3>
-
-<h3>{{job.position}}</h3>
-<h3>last updated on: {{job.updated_at}}</h3>
-<a href="{% url 'employer_profile_detail' job.employer.id%}"
-  ><h3>{{job.employer.full_name}}</h3></a
->
-{% if job.employer.email == request.user.email %}
-<a class="btn btn-danger" href="{% url 'job_creation_edit' job.id %}"
-  >Edit job</a
->
-{% endif %} {% if user.user_type == 'applicant' %}
-<a
-  class="btn btn-success"
-  href="{% url 'job_application' job.job_category.slug job.slug %}"
-  >Apply</a
->
-{% endif %}
 <!-- endfor -->
-
-<h1 class="h4">help i need this from core</h1>
 <!-- endfor -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{job.job_title}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">
+            {{ job.employer.full_name}}
+          </h6>
 
+          <p class="card-text text-break">{{job.job_description}}</p>
+          <h6 class="card-subtitle mb-2 text-muted">
+            Location - {{ job.job_location}}
+          </h6>
+          <h6 class="card-subtitle mb-2 text-muted">
+            Contract Type - {{ job.contract_type}}
+          </h6>
+          <h6 class="card-subtitle mb-2 text-muted">
+            Job Position - {{ job.position}}
+          </h6>
+
+          {% if user.user_type == 'applicant' %}
+          <a
+            href="{% url 'job_application' job.job_category.slug job.slug %}"
+            class="btn btn-outline-info mb-2 align-items-end"
+            >Apply Now</a
+          >
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- endblock -->
 {% endblock %}

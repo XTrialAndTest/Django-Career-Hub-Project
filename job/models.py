@@ -1,6 +1,7 @@
 from django.db import models
 from users.models import Employer, Applicant
 from cloudinary.models import CloudinaryField
+from cloudinary import CloudinaryImage
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
@@ -27,12 +28,18 @@ class CV(models.Model):
     applicant = models.ForeignKey(
         Applicant, on_delete=models.CASCADE, related_name="applicant_cv"
     )
-    cv_name = models.CharField(max_length=200)
 
+    cv_file = CloudinaryField("CV(PNG/JPEG)", null=True)
     date_applied = models.DateTimeField(auto_now=True, null=True)
 
+    @property
+    def cv_url(self):
+        return (
+            f"https://res.cloudinary.com/dlepgnfkx/{self.cv_file}"
+        )
+
     def __str__(self):
-        return self.cv_name
+        return self.cv_file
 
 
 class Job(models.Model):
@@ -77,8 +84,10 @@ class Job(models.Model):
 
 
 class Job_Item(models.Model):
-    job = models.ForeignKey(Job, on_delete=models.CASCADE, related_name="all_jobs")
-    cv = models.ForeignKey(CV, on_delete=models.CASCADE, related_name="all_jobs")
+    job = models.ForeignKey(
+        Job, on_delete=models.CASCADE, related_name="all_jobs")
+    cv = models.ForeignKey(CV, on_delete=models.CASCADE,
+                           related_name="all_jobs")
 
     def __str__(self):
-        return self.cv.cv_name
+        return self.job.job_title

@@ -24,4 +24,4 @@ class JobApplicationForm(forms.ModelForm):
 class Cv_form(forms.ModelForm):
     class Meta:
         model = CV
-        fields = ["cv_name"]
+        fields = ["cv_file"]

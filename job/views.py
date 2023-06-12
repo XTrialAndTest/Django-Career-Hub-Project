@@ -17,7 +17,8 @@ def job_category_detail(request, slug):
     category = get_object_or_404(Category, slug=slug)
     job = category.jobs.all()
     return render(
-        request, "job/job_category_detail.html", {"category": category, "job": job}
+        request, "job/job_category_detail.html", {
+            "category": category, "job": job}
     )
 
 

@@ -79,4 +79,4 @@ def employer_sign_up(request):
 def employer_profile_detail(request, pk):
     employer = Employer.employer.get(pk=pk)
     all = employer.jobs.all()
-    return render(request, "profiles/employer_profile_detail.html", {"employer": employer, "all": all})
+    return render(request, "profiles/employer_profile_detail.html", {"employer": employer, "job": all})
