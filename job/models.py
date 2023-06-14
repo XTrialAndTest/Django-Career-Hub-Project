@@ -29,7 +29,7 @@ class CV(models.Model):
         Applicant, on_delete=models.CASCADE, related_name="applicant_cv"
     )
 
-    cv_file = CloudinaryField("CV(PNG/JPEG)", null=True)
+    cv_file = CloudinaryField("CV(PNG/JPEG)", null=True, resource_type='raw')
     date_applied = models.DateTimeField(auto_now=True, null=True)
 
     @property
