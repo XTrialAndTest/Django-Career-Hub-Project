@@ -37,7 +37,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    "django.contrib.admin",
+    # "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     "cloudinary",
     "core",
-    "users",
+    "career_users",
     "job",
 ]
 
@@ -98,8 +98,6 @@ WSGI_APPLICATION = "D_C_H_P.wsgi.application"
 
 
 # }
-
-
 DATABASES = {
     "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
 
@@ -148,7 +146,7 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 LOGOUT_REDIRECT_URL = "login"
 LOGIN_REDIRECT_URL = "/"
-AUTH_USER_MODEL = "users.CustomUser"
+AUTH_USER_MODEL = "career_users.CustomUser"
 
 cloudinary.config(
     cloud_name=config("CLOUDINARY_NAME"),

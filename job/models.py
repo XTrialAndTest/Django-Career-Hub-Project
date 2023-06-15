@@ -1,5 +1,5 @@
 from django.db import models
-from users.models import Employer, Applicant
+from career_users.models import Employer, Applicant
 from cloudinary.models import CloudinaryField
 from cloudinary import CloudinaryImage
 from django.urls import reverse
